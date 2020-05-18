@@ -46,5 +46,15 @@ namespace anders3.Controllers
             }
             return Ok(response);
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            ServiceResponse<List<GetCharacterDto>> response = await _characterService.DeleteCharacter(id);
+            if(response.Data == null)
+            {
+                return NotFound(response);
+            }
+            return Ok(response);
+        }
     }
 }
