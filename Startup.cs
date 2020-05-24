@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using anders3.Data;
 using anders3.Properties.Services.CharacterService;
+using anders3.Properties.Services.WeaponService;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +51,9 @@ namespace anders3
                     ValidateAudience = false
                 };
             });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IWeaponService, WeaponService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
