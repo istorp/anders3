@@ -67,9 +67,14 @@ namespace anders3.Properties.Services.FightService
 
 
                 CharacterSkill characterSkill =
-                attacker.CharacterSkills.FirstOrDefault(cs => cs.Skill.Id == request.SkillId);        
+                attacker.CharacterSkills.FirstOrDefault(cs => cs.Skill.Id == request.SkillId);
+                if(characterSkill == null)
+                {
+                    response.Success = false;
+                    response.Message=$"{attacker.Name} dosent know that skill";                }
 
-                int damage = attacker.Weapon.Damage + (new Random().Next(attacker.Strength));
+
+                int damage = characterSkill.Skill.Damage + (new Random().Next(attacker.Intelligence));
                 damage -= new Random().Next(opponent.Defense);
                 if( damage > 0)        
                     opponent.HitPoints -=damage;
