@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using anders3.Data;
 using anders3.Properties.Services.CharacterService;
+using anders3.Properties.Services.CharacterSkillService;
+using anders3.Properties.Services.FightService;
 using anders3.Properties.Services.WeaponService;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -53,6 +55,8 @@ namespace anders3
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IWeaponService, WeaponService>();
+            services.AddScoped<ICharacterSkillService,CharacterSkillService>();
+            services.AddScoped<IFightService, FightService>();
 
         }
 

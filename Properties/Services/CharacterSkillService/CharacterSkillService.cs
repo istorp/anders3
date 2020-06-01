@@ -45,9 +45,19 @@ namespace anders3.Properties.Services.CharacterSkillService
 
                 {
                     response.Success=false;
-                    response.Message="";
+                    response.Message="Skill Not Found!";
                     return response;
-                }            }
+                }     
+                CharacterSkill characterSkill =new CharacterSkill
+                {
+                    Character=character,
+                    Skill=skill
+                };
+                
+                await _context.CharacterSkills.AddAsync(characterSkill);
+                await _context.SaveChangesAsync();
+                response.Data=_mapper.Map<GetCharacterDto>(character);
+            }
             catch(Exception ex)
             {
                 response.Success=false;
