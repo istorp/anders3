@@ -1,5 +1,6 @@
 using System.Linq;
 using anders3.Dtos.Character;
+using anders3.Dtos.Fight;
 using anders3.Dtos.Skill;
 using anders3.Dtos.Weapon;
 using anders3.Models;
@@ -16,6 +17,7 @@ namespace anders3
             CreateMap<AddCharacterDto, Character>();
             CreateMap<Weapon, GetWeaponDto>();
             CreateMap<Skill, GetSkillDto>();
+            CreateMap<Character, HighscoreDto>();
         }
         
     }
